@@ -3,27 +3,51 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `puntosat`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Adriana Torres Topaga`,
+    description: `Portfolio Adriana Torres Topaga`,
+    image: `/puntosat-icon.png`,
+    siteUrl: `https://www.puntos.at`,
   },
-  plugins: [{
-    resolve: 'gatsby-source-wordpress',
-    options: {
-      "url": "http://localhost:8080/blog/graphql"
-    }
-  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-sass", "gatsby-plugin-sitemap", "gatsby-transformer-remark", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+  plugins: [
+    {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        url: "http://localhost:8080/blog/graphql",
+      },
     },
-    __key: "images"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": "./src/pages/"
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "src/images/icon.svg",
+      },
     },
-    __key: "pages"
-  }]
-};
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sass",
+    "gatsby-plugin-sitemap",
+    "gatsby-transformer-remark",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: "./src/images/",
+      },
+      __key: "images",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pages",
+        path: "./src/pages/",
+      },
+      __key: "pages",
+    },
+    {
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        useLangKeyLayout: false,
+      },
+    },
+  ],
+}
