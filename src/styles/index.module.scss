@@ -1,0 +1,56 @@
+@import "/src/styles/global.scss";
+
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: rebeccapurple;
+}
+
+.upcoming-events {
+  position: relative;
+  top: -4em;
+  height: 100%;
+  margin: auto;
+  max-width: 850px;
+  height: 100vh;
+  .upcoming-events-heading {
+    position: sticky;
+    top: 1em;
+    font-size: 2em;
+    z-index: 1;
+  }
+  .upcoming-events-list {
+    position: relative;
+    margin: auto;
+    max-width: 600px;
+    padding-top: 15em;
+    .upcoming-events-list-element {
+      height: 271px;
+      border-radius: 598px;
+      background: red;
+    }
+  }
+}
+
+.upcoming-events-list-element-img {
+}
+.upcoming-events-list-element-details {
+}
+
+.test {
+  width: 100%;
+  height: 100vh;
+  &:nth-child(2) {
+    background: lightcyan;
+  }
+  &:nth-child(3) {
+    background: lightgoldenrodyellow;
+  }
+  &:nth-child(4) {
+    background: lightgreen;
+  }
+  &:nth-child(5) {
+    background: lightseagreen;
+  }
+}
