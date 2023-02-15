@@ -65,16 +65,17 @@
   @include media-md {
     padding-top: 2em;
     padding-bottom: 3em;
+    font-size: 1.2em;
     background: #ffffff93;
 
     &[data-active="true"] {
       padding-top: 1em;
       padding-bottom: 1em;
-      font-size: 0.9em;
+      font-size: 1.2em;
       background: #ffffff51;
     }
     &[data-active="true"] .header-container .header-title {
-      width: 63px;
+      width: 84px;
       svg {
         height: 1.4em;
       }
@@ -92,7 +93,6 @@
 
 .header-container {
   position: relative;
-  max-width: 800px;
   height: 100%;
   margin: auto;
   display: flex;
@@ -103,6 +103,7 @@
   @include media-md {
     flex-direction: row;
     align-items: flex-end;
+    max-width: 850px;
   }
   @include media-lg {
     padding: unset;
@@ -132,11 +133,19 @@
   position: relative;
   left: -0.4em;
   font-size: 2.5em;
-  line-height: 0.7em;
+  line-height: 0.9em;
   font-weight: 300;
   transition: 0.2s;
   &[data-menu="true"] {
     display: none;
+  }
+  @include media-md {
+    font-size: 2.1em;
+    left: -0.8em;
+  }
+  @include media-lg {
+    font-size: 2.3em;
+    left: -0.6em;
   }
 }
 
@@ -152,6 +161,12 @@
   transition: 0.2s;
   @include media-md {
     display: block;
+    font-size: 1em;
+    top: 2.4em;
+  }
+  @include media-lg {
+    font-size: 1.2em;
+    top: 2.1em;
   }
 }
 
@@ -201,6 +216,7 @@
     .nav-link-item {
       font-size: 1em;
       font-weight: unset;
+      padding-bottom: 0.1em;
       a {
         &:hover {
           color: $primary-color;
