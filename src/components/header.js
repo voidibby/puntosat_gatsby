@@ -3,10 +3,11 @@ import { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import * as css from "/src/styles/header.module.scss"
 
-const Header = ({ pageTitle, pageSlug }) => {
+const Header = (props) => {
   const [scrolled, setScrolled] = useState(false)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [menuVisibility, setMenuVisibility] = useState(false)
+  const [scrolledHeight, setScrolledHeight] = useState(false)
 
   if (menuVisibility) {
     document.body.style.overflow = "hidden"
@@ -27,6 +28,11 @@ const Header = ({ pageTitle, pageSlug }) => {
       if (isScrolled !== scrolled) {
         setScrolled(!scrolled)
       }
+
+      const isScrolledHeight = window.scrollY > window.innerHeight
+      if (props.onMain == "true" && isScrolledHeight !== scrolledHeight) {
+        setScrolledHeight(!scrolledHeight)
+      }
     }
 
     document.addEventListener("scroll", handleScroll, { passive: true })
@@ -36,10 +42,15 @@ const Header = ({ pageTitle, pageSlug }) => {
       document.removeEventListener("scroll", handleScroll)
       window.removeEventListener("resize", handleResize)
     }
-  }, [scrolled])
+  }, [scrolled, scrolledHeight, props.onMain])
 
   return (
-    <header className={css.headerWrapper} data-active={scrolled} data-menu={menuVisibility}>
+    <header
+      className={css.headerWrapper}
+      data-active={scrolled}
+      data-menu={menuVisibility}
+      {...(props.onMain ? { "data-mainmenuactive": scrolledHeight } : {})}
+    >
       <nav className={css.headerContainer}>
         <Link className={css.headerTitle} data-menu={menuVisibility} to="/">
           <svg data-menu={menuVisibility} viewBox="0 0 92 46" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +58,7 @@ const Header = ({ pageTitle, pageSlug }) => {
             <path d="M92 17.1379H75.0436V0H63.7386V17.1379H46.7822V28.5639H63.7386V45.7019H75.0436V28.5639H92V17.1379Z" />
           </svg>
           <h3 className={css.headerPageTitle} data-menu={menuVisibility}>
-            {pageTitle}
+            {props.pageTitle}
           </h3>
           <h5 className={css.headerPageArtistName}>Adriana Torres Topaga</h5>
         </Link>
