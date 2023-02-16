@@ -6,7 +6,7 @@ import * as css from "../styles/layout.module.scss"
 const Layout = (props) => {
   return (
     <>
-      <Header pageTitle={props.pageTitle}></Header>
+      <Header pageTitle={props.pageTitle} onMain={props.onMain ? "true" : null}></Header>
       <Main>{props.children}</Main>
     </>
   )

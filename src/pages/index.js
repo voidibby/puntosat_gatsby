@@ -6,7 +6,7 @@ import * as css from "../styles/index.module.scss"
 
 const HomePage = () => {
   return (
-    <Layout>
+    <Layout onMain={true}>
       <div className={css.heroImageContainer}>{/* Here goes and image */}</div>
       <div className={css.upcomingEvents}>
         <h3 className={css.upcomingEventsHeading}>upcoming events</h3>
