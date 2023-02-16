@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { Link } from "gatsby"
 import Layout from "../templates/layout"
 import "../styles/global.scss"
+import * as css from "../styles/index.module.scss"
 
 const WorksPage = (props, _data, _pageTitle) => {
   const pageTitle = "works"
@@ -13,6 +14,11 @@ const WorksPage = (props, _data, _pageTitle) => {
       {data.map((node) => (
         <Link to={`./${node.slug}`}>{node.title}</Link>
       ))}
+      <div className={css.test}></div>
+      <div className={css.test}></div>
+      <div className={css.test}></div>
+      <div className={css.test}></div>
+      <div className={css.test}></div>
     </Layout>
   )
 }
