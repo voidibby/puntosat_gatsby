@@ -44,7 +44,7 @@
   padding-top: 1.2em;
   padding-bottom: 1.2em;
   background: unset;
-  z-index: 1;
+  z-index: 2;
   &[data-menu="true"] {
     height: 100vh;
     background: $primary-color;
@@ -53,8 +53,8 @@
     padding-top: 2em;
     padding-bottom: 3em;
     font-size: 1.2em;
+    transition: 0.5s;
     background: #ffffff93;
-
     &[data-active="true"] {
       padding-top: 1em;
       padding-bottom: 1em;
@@ -63,17 +63,26 @@
     }
     &[data-active="true"] .header-container .header-title {
       width: 84px;
+      align-items: center;
       svg {
         height: 1.4em;
       }
     }
     &[data-active="true"] .header-container .header-page-title {
-      font-size: 2em;
+      left: -0.4em;
+      font-size: 1.3em;
+      font-weight: 500;
     }
     &[data-active="true"] .header-container .header-page-artist-name {
       top: 0;
       opacity: 0;
       font-size: 0.2em;
+    }
+    &[data-mainmenuactive="false"] {
+      top: -10em;
+    }
+    &[data-mainmenuactive="true"] {
+      top: 0;
     }
   }
 }
@@ -128,7 +137,6 @@
   }
   @include media-md {
     font-size: 2.1em;
-    left: -0.8em;
   }
   @include media-lg {
     font-size: 2.3em;
