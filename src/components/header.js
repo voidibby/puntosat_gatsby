@@ -29,7 +29,7 @@ const Header = (props) => {
         setScrolled(!scrolled)
       }
 
-      const isScrolledHeight = window.scrollY > window.innerHeight
+      const isScrolledHeight = window.scrollY > window.innerHeight / 3
       if (props.onMain == "true" && isScrolledHeight !== scrolledHeight) {
         setScrolledHeight(!scrolledHeight)
       }
