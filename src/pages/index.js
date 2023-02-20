@@ -2,6 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { Parallax } from "react-parallax"
 import Layout from "../templates/layout"
+import UpcomingEventsListElement from "../components/upcominglistelement"
 import heroImage from "../images/img.png"
 import * as css from "../styles/index.module.scss"
 
@@ -9,6 +10,44 @@ const HomePage = () => {
   const mapRange = (value, newMin, newMax) => {
     return value * (newMax - newMin) + newMin
   }
+
+  const items = [
+    {
+      eventDates: `10.11.22 – 28.05.23`,
+      eventTitle: `WHAT THE FEM`,
+      description: `10.11.2022 Ausstellungseröffnung
+      Feministische Perspektiven 1950 bis heute
+      Teilnahme
+      Nordico Museum`,
+    },
+    {
+      eventDates: `15.10.22 – 16.10.22`,
+      eventTitle: `TAGE DER OFFENEN ATELIERS`,
+      description: `Featuring Adriana Torres Topaga
+      Ausstellung in DH5 - Damen und
+      Herrenstrasse 5 A-4020 Linz`,
+    },
+    {
+      eventDates: `06.10.22 – 09.10.22`,
+      eventTitle: `LINZER KUNSTSALON`,
+      description: `Schlossmuseum Linz
+      Schlossbert 1, 4020 Linz
+      Teilnehmende Künstler*innen des Kunstforums Salzkammergut
+      Andrea Penz · Adriana Torres Topaga · Ernst Spiessberger · Lydia Wassner-Hauser`,
+    },
+    {
+      eventDates: `15.01.22 – 24.02.22`,
+      eventTitle: `"Im Maßstab".die Kunstschaffenden - Ausstellung `,
+      description: `Die Ausstellung in Salzburg findet im Jänner / Februar 2022 statt.
+      Eröffnung am Freitag, dem 14. Jänner 2022
+      Dauer der Ausstellung: 15.01. bis 24.02.2022
+      art bv Berchtoldvilla
+      Berufsvereinigung Bildender Künstler
+      Landesverband Salzburg
+      Josef-Preis-Allee 12
+      5020 Salzburg`,
+    },
+  ]
 
   return (
     <Layout onMain={true}>
@@ -46,12 +85,11 @@ const HomePage = () => {
           <h3>upcoming events</h3>
         </div>
         <ul className={css.upcomingEventsList}>
-          <li className={css.upcomingEventsListElement}>
-            <div className={css.upcomingEventsListElementImg}>{/* Here goes and image */}</div>
-            <div className={css.upcomingEventsListElementDetails}>
-              <p className={css.eventDates}>1990-1889</p>
-            </div>
-          </li>
+          {items.map((item) => (
+            <UpcomingEventsListElement eventDates={item.eventDates} eventTitle={item.eventTitle}>
+              {item.description}
+            </UpcomingEventsListElement>
+          ))}
         </ul>
       </div>
 
