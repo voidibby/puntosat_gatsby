@@ -26,7 +26,7 @@
     }
     h2 {
       font-size: 4.1em;
-      line-height: 0.8em;
+      line-height: 0.9em;
       height: 1em;
       color: $primary-color;
     }
@@ -52,10 +52,8 @@
 .upcoming-events {
   position: relative;
   top: -4em;
-  height: 100%;
   margin: auto;
   max-width: 850px;
-  height: 100vh;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
   .upcoming-events-heading {
@@ -79,36 +77,111 @@
       color: $primary-color;
     }
   }
-  .upcoming-events-list {
-    position: relative;
-    margin: auto;
-    max-width: 600px;
-    padding-top: 6em;
-    .upcoming-events-list-element {
-      height: 250px;
-      border-radius: 598px;
-      background: $primary-color;
-      opacity: 0.5;
-      display: flex;
-    }
-  }
   @include media-lg {
     padding-left: 0;
     padding-right: 0;
   }
 }
 
+.upcoming-events-list {
+  position: relative;
+  margin: auto;
+  max-width: 640px;
+  padding-top: 6em;
+  padding-bottom: 2em;
+  .upcoming-events-list-element {
+    height: auto;
+    border-radius: 2em;
+    display: flex;
+    transition: 0.2s;
+    @include media-sm {
+      /*height: 250px;*/
+      border-radius: 125px;
+      background: $primary-color-half-opacity;
+      margin-bottom: 2em;
+      overflow: hidden;
+    }
+  }
+}
+
 .upcoming-events-list-element-img {
   position: relative;
-  width: calc(40% - 1em);
+  display: none;
+  height: calc(250px - 2em);
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   margin: 1em;
   background: red;
+  opacity: 0.5;
+  @include media-sm {
+    display: block;
+  }
 }
+
 .upcoming-events-list-element-details {
   position: relative;
   padding: 1em;
+  padding-left: 2.5em;
+  color: $primary-color;
+  .event-description {
+    padding-top: 1.2em;
+    padding-bottom: 0.5em;
+    white-space: pre-line;
+  }
+  .event-description-extent-button {
+    display: none;
+  }
+  @include media-sm {
+    max-height: 250px;
+    padding-left: 1em;
+    padding-right: 0;
+    padding-top: 2em;
+    padding-bottom: 0;
+    padding-bottom: 2em;
+    overflow: hidden;
+    width: calc(100% - (250px + 3em) - 25px);
+    color: $light-contrast-color;
+    transition: 0.8s;
+    .event-description-extent-button {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      height: 5em;
+      width: calc(100% - 60px);
+      background: linear-gradient(180deg, rgba(221, 231, 128, 0) 0%, #dde780 80%);
+      cursor: pointer;
+      svg {
+        stroke: $light-contrast-color;
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        width: 1.5em;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform-origin: 25% 25%;
+        transform: translate(-50%, -30%);
+        transition: 0.2s;
+      }
+      &:hover {
+        svg {
+          stroke: $primary-color;
+        }
+      }
+    }
+    &[data-expanded="true"] {
+      max-height: 500px;
+      padding-bottom: 3em;
+
+      .event-description-extent-button {
+        height: 4em;
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
 }
 
 .test {
