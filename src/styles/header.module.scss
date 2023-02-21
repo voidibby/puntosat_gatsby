@@ -40,10 +40,10 @@
   position: fixed;
   top: 0;
   width: 100%;
-  max-height: 0;
+  height: auto;
   padding-top: 1.2em;
   padding-bottom: 1.2em;
-  background: unset;
+  background: #ffffff00;
   z-index: 2;
   transition: 0.2s;
   &[data-menu="true"] {
@@ -73,7 +73,7 @@
     &[data-active="true"] .header-container .header-page-title {
       left: -0.4em;
       font-size: 1.3em;
-      font-weight: 500;
+      font-weight: 400;
     }
     &[data-active="true"] .header-container .header-page-artist-name {
       top: 0;
@@ -91,7 +91,7 @@
 
 .header-container {
   position: relative;
-  height: 100vh;
+  height: 2.5em;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -106,6 +106,9 @@
   }
   @include media-lg {
     padding: unset;
+  }
+  &[data-menu="true"] {
+    height: 100vh;
   }
 }
 
