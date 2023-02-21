@@ -1,0 +1,23 @@
+@import "/src/styles/global.scss";
+
+.work-list-wrapper {
+  position: relative;
+  margin: auto;
+  max-width: 850px;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  padding-bottom: 2em;
+  @include media-md {
+    padding-top: 9em;
+  }
+  @include media-lg {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.work-list-element {
+  list-style: none;
+  height: 50vh;
+  background: green;
+}
