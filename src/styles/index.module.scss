@@ -51,11 +51,12 @@
 
 .upcoming-events {
   position: relative;
-  top: -4em;
   margin: auto;
+  margin-top: -4em;
   max-width: 850px;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
+  padding-bottom: 2em;
   .upcoming-events-heading {
     position: sticky;
     top: 6em;
@@ -69,11 +70,17 @@
       stroke-linecap: round;
       stroke-linejoin: round;
       flex-shrink: 1;
-      padding-right: 0.5em;
+      transform-origin: 50% 50%;
+      transition: 0.2s;
+      &[data-reachBottom="true"] {
+        transform: rotate(180deg);
+      }
     }
     h3 {
       font-size: 2em;
       line-height: 1em;
+      padding-left: 0.5em;
+      white-space: nowrap;
       color: $primary-color;
     }
   }
@@ -88,19 +95,24 @@
   margin: auto;
   max-width: 640px;
   padding-top: 6em;
-  padding-bottom: 2em;
+  padding-bottom: 7em;
   .upcoming-events-list-element {
     height: auto;
     border-radius: 2em;
+    margin-bottom: 2em;
     display: flex;
+    color: $primary-color;
     transition: 0.2s;
     @include media-sm {
       /*height: 250px;*/
       border-radius: 125px;
-      background: $primary-color-half-opacity;
-      margin-bottom: 2em;
+      background: $primary-color;
+      color: $light-contrast-color;
       overflow: hidden;
     }
+  }
+  @include media-sm {
+    padding-bottom: 5em;
   }
 }
 
@@ -111,7 +123,7 @@
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   margin: 1em;
-  background: red;
+  background: #ffffff80;
   opacity: 0.5;
   @include media-sm {
     display: block;
@@ -122,7 +134,7 @@
   position: relative;
   padding: 1em;
   padding-left: 2.5em;
-  color: $primary-color;
+  /*color: $primary-color;*/
   .event-description {
     padding-top: 1.2em;
     padding-bottom: 0.5em;
@@ -140,15 +152,16 @@
     padding-bottom: 2em;
     overflow: hidden;
     width: calc(100% - (250px + 3em) - 25px);
-    color: $light-contrast-color;
+    /*color: $light-contrast-color;*/
     transition: 0.8s;
     .event-description-extent-button {
       display: block;
       position: absolute;
       bottom: 0;
       height: 5em;
-      width: calc(100% - 60px);
-      background: linear-gradient(180deg, rgba(221, 231, 128, 0) 0%, #dde780 80%);
+      width: calc(100% - 30px);
+      /*background: linear-gradient(180deg, rgba(221, 231, 128, 0) 0%, #dde780 80%);*/
+      background: linear-gradient(180deg, $primary-color-no-opacity 0%, $primary-color 80%);
       cursor: pointer;
       svg {
         stroke: $light-contrast-color;
@@ -169,6 +182,9 @@
           stroke: $primary-color;
         }
       }
+      &[data-overflow="false"] {
+        display: none;
+      }
     }
     &[data-expanded="true"] {
       max-height: 500px;
@@ -184,19 +200,41 @@
   }
 }
 
-.test {
+.footer {
+  position: relative;
   width: 100%;
-  height: 100vh;
-  &:nth-child(2) {
-    background: lightcyan;
+  height: calc(100vh - 9em);
+
+  background: $primary-color;
+}
+
+.footer-wrapper {
+  position: relative;
+  max-width: 850px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  @include media-lg {
+    padding-left: 0em;
+    padding-right: 0em;
   }
-  &:nth-child(3) {
-    background: lightgoldenrodyellow;
-  }
-  &:nth-child(4) {
-    background: lightgreen;
-  }
-  &:nth-child(5) {
-    background: lightseagreen;
+}
+
+.footer-content {
+  margin-top: auto;
+  padding-top: 3em;
+  padding-bottom: 3em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: $light-contrast-color;
+  h1 {
+    &:nth-child(2) {
+      padding-left: 0.5em;
+    }
   }
 }

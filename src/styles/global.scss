@@ -6,6 +6,23 @@ body {
   height: 100vh;
 }
 
+.test {
+  width: 100%;
+  height: 100vh;
+  &:nth-child(2) {
+    background: lightcyan;
+  }
+  &:nth-child(3) {
+    background: lightgoldenrodyellow;
+  }
+  &:nth-child(4) {
+    background: lightgreen;
+  }
+  &:nth-child(5) {
+    background: lightseagreen;
+  }
+}
+
 /* 
   SASS Tutorial (build your own CSS library) #15 - Media Queries
   https://www.youtube.com/watch?v=3R4fpnIAozs 
