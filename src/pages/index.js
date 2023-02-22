@@ -125,14 +125,6 @@ const HomePage = () => {
           ))}
         </ul>
       </div>
-      <div className={css.footer}>
-        <div className={css.footerWrapper}>
-          <div className={css.footerContent}>
-            <h1>Adriana Torres Topaga</h1>
-            <h1>2023</h1>
-          </div>
-        </div>
-      </div>
     </Layout>
   )
 }
