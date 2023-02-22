@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
 import { Link } from "gatsby"
-import * as css from "/src/styles/header.module.scss"
+import * as css from "../styles/header.module.scss"
 
 const Header = (props) => {
   const [scrolled, setScrolled] = useState(false)
