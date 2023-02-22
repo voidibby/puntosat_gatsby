@@ -44,8 +44,8 @@ const UpcomingEventsListElement = (props) => {
         data-expanded={expanded}
         ref={overflowContainer}
       >
-        <h3 className={css.eventDates}>{props.eventDates}</h3>
-        <h2 className={css.eventTitle}>{props.eventTitle}</h2>
+        <h3>{props.eventDates}</h3>
+        <h2>{props.eventTitle}</h2>
         <p className={css.eventDescription}>{props.children}</p>
         <div
           className={css.eventDescriptionExtentButton}
