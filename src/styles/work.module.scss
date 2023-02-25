@@ -1,0 +1,80 @@
+@import "/src/styles/global.scss";
+@import "/src/styles/imageslider.module.scss";
+
+.work-hero-image-container {
+  position: relative;
+  width: 100vw;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.work-wrapper {
+  padding-top: 5em;
+  @include media-md {
+    padding-top: 9em;
+  }
+}
+
+.work-content {
+  position: relative;
+  margin: auto;
+  width: calc(100% - 2em);
+  margin-top: 1em;
+  padding-bottom: 10em;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  @include media-sm {
+    width: calc(100% - 4em);
+    margin-top: 2em;
+  }
+  @include media-md {
+    flex-direction: row;
+    max-width: 850px;
+  }
+  @include media-lg {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @include media-xl {
+    max-width: 1200px;
+    margin-top: 4em;
+  }
+  .work-details {
+    position: relative;
+    width: 100%;
+    padding: 0.5em;
+    height: 100%;
+    color: $primary-color;
+    @include media-md {
+      width: 45%;
+      position: sticky;
+      margin-top: -75%;
+      top: 7em;
+    }
+  }
+  .work-description {
+    width: 100%;
+    padding: 0.5em;
+    @include media-md {
+      width: 55%;
+    }
+    .work-languages {
+      position: relative;
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
+      h5 {
+        padding: 0.3em;
+        margin-bottom: 2em;
+        color: $primary-color;
+        transition: 0.2s;
+        cursor: pointer;
+        &:hover {
+          color: $dark-contrast-color;
+        }
+      }
+    }
+  }
+}
