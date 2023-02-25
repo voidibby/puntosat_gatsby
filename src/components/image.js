@@ -1,20 +1,17 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import * as css from "../styles/works.module.scss"
 
 const Image = (props) => {
   const data = useStaticQuery(graphql`
     query {
-      allFile(filter: { internal: { mediaType: { regex: "/image/" } } }) {
-        edges {
-          node {
-            relativePath
-            extension
-            publicURL
-            childImageSharp {
-              gatsbyImageData
-            }
+      allFile(filter: { extension: { regex: "/(jpg)|(png)|(jpeg)/" } }) {
+        nodes {
+          id
+          relativePath
+          childImageSharp {
+            gatsbyImageData
           }
         }
       }
@@ -23,21 +20,30 @@ const Image = (props) => {
 
   return (
     <>
-      {data.allFile.edges.map((edge) => {
-        if (edge.node.relativePath == props.src) {
-          // return <p>{edge.node.relativePath}</p>
+      {data.allFile.nodes.map((node) => {
+        if (node.relativePath == props.src) {
+          // return <p>{node.relativePath}</p>
           return (
-            <GatsbyImage
-              image={edge.node.childImageSharp.gatsbyImageData}
-              alt="someImage"
-              layout="fullWidth"
-              placeholder="dominantColor"
-              as="div"
-              className={css.workListElementThumbnailContent}
-              imgClassName={css.workListElementThumbnailImg}
-              objectFit="cover"
-              object-position="50% 50%"
-            />
+            <>
+              <GatsbyImage
+                key={node.id}
+                image={node.childImageSharp.gatsbyImageData}
+                alt="someImage"
+                layout="fullWidth"
+                placeholder="dominantColor"
+                as="div"
+                className={props.className}
+                imgClassName={props.imgClassName}
+                objectFit="cover"
+                object-position="50% 50%"
+                vertical={
+                  node.childImageSharp.gatsbyImageData.width >
+                  node.childImageSharp.gatsbyImageData.height
+                    ? "true"
+                    : "false"
+                }
+              />
+            </>
           )
         }
       })}
@@ -46,3 +52,7 @@ const Image = (props) => {
 }
 
 export default Image
+
+// Carrousels!
+// https://react-slick.neostack.com/
+// https://owlcarousel2.github.io/OwlCarousel2/docs/api-classes.html

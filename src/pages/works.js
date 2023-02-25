@@ -4,13 +4,13 @@ import { Link } from "gatsby"
 import { StaticImage, GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 import Layout from "../templates/layout"
 import Image from "../components/image"
-import worksPlaceholder from "../components/worksplaceholder"
 import "../styles/global.scss"
 import * as css from "../styles/works.module.scss"
 
-const WorksPage = (props, _data, _pageTitle) => {
+const WorksPage = (props) => {
   const pageTitle = "works"
-  const data = props.data.allWpPost.nodes
+  const wpWorks = props.data.allWpPost.nodes
+  const localWorks = props.data.allPost.nodes
 
   return (
     <Layout pageTitle={pageTitle}>
@@ -21,13 +21,17 @@ const WorksPage = (props, _data, _pageTitle) => {
       */}
 
       <ul className={css.workListWrapper}>
-        {worksPlaceholder.map((item) => (
-          <li className={css.workListElement} key={item.id}>
-            <Link to="/about">
+        {localWorks.map((work) => (
+          <li key={work.id} className={css.workListElement}>
+            <Link to={work.slug}>
               <div className={css.workListElementThumbnailWrapper}>
-                <Image src={item.thumbnailPath}></Image>
+                <Image
+                  src={work.thumbnailPath}
+                  className={css.workListElementThumbnailContent}
+                  imgClassName={css.workListElementThumbnailImg}
+                ></Image>
               </div>
-              <h5>{item.title}</h5>
+              <h5>{work.title}</h5>
             </Link>
           </li>
         ))}
@@ -48,6 +52,15 @@ export const query = graphql`
           slug
           title
         }
+      }
+    }
+    allPost {
+      nodes {
+        id
+        title
+        slug
+        thumbnailPath
+        images
       }
     }
   }

@@ -3,10 +3,11 @@ import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import Layout from "../../templates/layout"
 
-const WorkPage = (props, _data) => {
+const WorkPage = (props) => {
   const data = props.data.allWpPost.nodes[0]
   return (
     <Layout pageTitle="works">
+      <Image></Image>
       <h1>{data.title}</h1>
       <Link to={`./`}>{data.title}</Link>
       <Link to={`../${data.translations[0].slug}`}>{data.translations[0].title}</Link>
