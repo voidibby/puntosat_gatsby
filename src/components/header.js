@@ -81,20 +81,22 @@ const Header = (props) => {
         </ul>
         <ul className={css.navLinks} data-menu={menuVisibility}>
           <li className={css.navLinkItem}>
-            <Link to="about">es</Link>
+            <Link to="works">es</Link>
           </li>
           <li className={css.navLinkItem}>
-            <Link to="about">en</Link>
+            <Link to="works">en</Link>
           </li>
           <li className={css.navLinkItem}>
-            <Link to="about">de</Link>
+            <Link to="works">de</Link>
           </li>
         </ul>
       </nav>
+      {/* 
       <div className={css.screenWidth}>
         <div className={css.blah}></div>
         <p>{windowWidth}</p>
       </div>
+      */}
       <div
         className={css.menuButton}
         onClick={() => {
