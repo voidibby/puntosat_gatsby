@@ -37,7 +37,7 @@ const UpcomingEventsListElement = (props) => {
   }, [expanded, overflowed])
 
   return (
-    <li key={props.key} className={css.upcomingEventsListElement}>
+    <li className={css.upcomingEventsListElement}>
       <div className={css.upcomingEventsListElementImg}>{/* Here goes and image */}</div>
       <div
         className={css.upcomingEventsListElementDetails}

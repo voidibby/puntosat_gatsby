@@ -14,11 +14,7 @@ const WorkPage = (props) => {
   return (
     <Layout pageTitle="works">
       <div className={css.workWrapper}>
-        <Image
-          src={localWorks.images[0]}
-          className={css.workHeroImageContainer}
-          imgClassName={css.workHeroImageImg}
-        ></Image>
+        <Image src={localWorks.images[0]} className={css.workHeroImageContainer}></Image>
 
         <ImageSlider>
           {localWorks.images.map((image, index) => (
