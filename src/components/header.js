@@ -3,16 +3,20 @@ import { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import * as css from "../styles/header.module.scss"
 
+const isBrowser = typeof window !== "undefined"
+
 const Header = (props) => {
   const [scrolled, setScrolled] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [menuVisibility, setMenuVisibility] = useState(false)
   const [scrolledHeight, setScrolledHeight] = useState(false)
-
-  if (menuVisibility) {
-    document.body.style.overflow = "hidden"
-  } else {
-    document.body.style.overflow = "scroll"
+  const [windowWidth, setWindowWidth] = useState(null)
+  if (isBrowser) {
+    setWindowWidth(window.innerWidth)
+    if (menuVisibility) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
   }
 
   useEffect(() => {
