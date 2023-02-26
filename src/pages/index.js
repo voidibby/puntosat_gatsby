@@ -107,7 +107,7 @@ const HomePage = () => {
           <svg
             viewBox="0 0 40 40"
             xmlns="http://www.w3.org/2000/svg"
-            data-reachBottom={reachBottom}
+            data-reachbottom={reachBottom}
           >
             <path d="M20 5V35M20 35L35 20M20 35L5 20" />
           </svg>
