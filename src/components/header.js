@@ -3,26 +3,23 @@ import { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import * as css from "../styles/header.module.scss"
 
-const isBrowser = typeof window !== "undefined"
-
 const Header = (props) => {
   const [scrolled, setScrolled] = useState(false)
   const [menuVisibility, setMenuVisibility] = useState(false)
   const [scrolledHeight, setScrolledHeight] = useState(false)
   const [windowWidth, setWindowWidth] = useState(null)
-  if (isBrowser) {
+
+  useEffect(() => {
     setWindowWidth(window.innerWidth)
     if (menuVisibility) {
       document.body.style.overflow = "hidden"
     } else {
       document.body.style.overflow = "auto"
     }
-  }
 
-  useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
-      if (window.innerWidth >= 768) {
+      if (windowWidth < 768) {
         setMenuVisibility(false)
       }
     }
@@ -46,7 +43,7 @@ const Header = (props) => {
       document.removeEventListener("scroll", handleScroll)
       window.removeEventListener("resize", handleResize)
     }
-  }, [scrolled, scrolledHeight, props.onMain])
+  }, [scrolled, scrolledHeight, menuVisibility])
 
   return (
     <header
@@ -95,12 +92,12 @@ const Header = (props) => {
           </li>
         </ul>
       </nav>
-      {/* 
       <div className={css.screenWidth}>
+        {/* 
         <div className={css.blah}></div>
         <p>{windowWidth}</p>
-      </div>
       */}
+      </div>
       <div
         className={css.menuButton}
         onClick={() => {
